@@ -45,7 +45,7 @@ def main():
     testset_Ls = ['RealSRSet']  # ['RealSRSet','DPED']
 
     model_names = ['RRDB','ESRGAN','FSSR_DPED','FSSR_JPEG','RealSR_DPED','RealSR_JPEG']
-    model_names = ['BSRGAN']    # 'BSRGANx2' for scale factor 2
+    model_names = ['BSRGANx2','BSRGAN']    # 'BSRGANx2' for scale factor 2
 
 
 
@@ -60,8 +60,9 @@ def main():
         logger.info('{:>16s} : {:s}'.format('Model Name', model_name))
 
         # torch.cuda.set_device(0)      # set GPU ID
-        logger.info('{:>16s} : {:<d}'.format('GPU ID', torch.cuda.current_device()))
-        torch.cuda.empty_cache()
+        if device == 'cpu':
+            logger.info('{:>16s} : {:<d}'.format('GPU ID', torch.cuda.current_device()))
+            torch.cuda.empty_cache()
 
         # --------------------------------
         # define network and load model
