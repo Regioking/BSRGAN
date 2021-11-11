@@ -43,7 +43,7 @@ def main():
 
     testsets = 'testsets'       # fixed, set path of testsets
     testset_Ls = ['RealSRSet']  # ['RealSRSet','DPED']
-
+    #testset_Ls = ['v_ApplyEyeMakeup_g13_c02','v_ApplyLipstick_g19_c02','v_Archery_g15_c05','v_BabyCrawling_g20_c02','v_BalanceBeam_g17_c04','v_BandMarching_g05_c06']
     model_names = ['RRDB','ESRGAN','FSSR_DPED','FSSR_JPEG','RealSR_DPED','RealSR_JPEG']
     model_names = ['BSRGAN']    # 'BSRGANx2' for scale factor 2
 
@@ -60,7 +60,8 @@ def main():
         logger.info('{:>16s} : {:s}'.format('Model Name', model_name))
 
         # torch.cuda.set_device(0)      # set GPU ID
-        if device == 'cpu':
+        print(device)
+        if device == 'cuda':
             logger.info('{:>16s} : {:<d}'.format('GPU ID', torch.cuda.current_device()))
             torch.cuda.empty_cache()
 
